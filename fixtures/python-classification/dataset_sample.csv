@@ -1,0 +1,6 @@
+text,label,length
+"short positive example",positive,22
+"negative sample with more words",negative,31
+"another positive training row",positive,29
+"ambiguous neutral looking example",neutral,33
+"negative row",negative,12

@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Hoverable Metric Chart</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; color: #172033; }
+  svg { max-width: 760px; width: 100%; height: auto; border: 1px solid #d7dde8; }
+  .line { fill: none; stroke-width: 3; }
+  .point { cursor: crosshair; stroke: white; stroke-width: 2; }
+  .tooltip { position: fixed; display: none; padding: 8px 10px; background: #111827; color: white; border-radius: 6px; font-size: 13px; pointer-events: none; }
+</style>
+<svg viewBox="0 0 760 360" role="img" aria-label="Validation accuracy over epochs">
+  <line x1="60" y1="300" x2="720" y2="300" stroke="#94a3b8"/>
+  <line x1="60" y1="40" x2="60" y2="300" stroke="#94a3b8"/>
+  <path class="line" stroke="#2563eb" d="M80 250 L220 210 L360 170 L500 130 L640 95"/>
+  <path class="line" stroke="#dc2626" d="M80 270 L220 225 L360 190 L500 150 L640 120" stroke-dasharray="8 5"/>
+  <g data-run="baseline" data-metric="val_acc">
+    <circle class="point" fill="#2563eb" cx="80" cy="250" r="6" data-step="1" data-value="0.70"/>
+    <circle class="point" fill="#2563eb" cx="220" cy="210" r="6" data-step="2" data-value="0.76"/>
+    <circle class="point" fill="#2563eb" cx="360" cy="170" r="6" data-step="3" data-value="0.82"/>
+    <circle class="point" fill="#2563eb" cx="500" cy="130" r="6" data-step="4" data-value="0.88"/>
+    <circle class="point" fill="#2563eb" cx="640" cy="95" r="6" data-step="5" data-value="0.93"/>
+  </g>
+  <g data-run="augmented" data-metric="val_acc">
+    <circle class="point" fill="#dc2626" cx="80" cy="270" r="6" data-step="1" data-value="0.67"/>
+    <circle class="point" fill="#dc2626" cx="220" cy="225" r="6" data-step="2" data-value="0.74"/>
+    <circle class="point" fill="#dc2626" cx="360" cy="190" r="6" data-step="3" data-value="0.79"/>
+    <circle class="point" fill="#dc2626" cx="500" cy="150" r="6" data-step="4" data-value="0.85"/>
+    <circle class="point" fill="#dc2626" cx="640" cy="120" r="6" data-step="5" data-value="0.90"/>
+  </g>
+</svg>
+<div class="tooltip" id="tip"></div>
+<script>
+  const tip = document.getElementById("tip");
+  document.querySelectorAll(".point").forEach((point) => {
+    point.addEventListener("mousemove", (event) => {
+      const group = point.closest("g");
+      tip.textContent = `${group.dataset.run} ${group.dataset.metric} step ${point.dataset.step}: ${point.dataset.value}`;
+      tip.style.display = "block";
+      tip.style.left = `${event.clientX + 12}px`;
+      tip.style.top = `${event.clientY + 12}px`;
+    });
+    point.addEventListener("mouseleave", () => {
+      tip.style.display = "none";
+    });
+  });
+</script>

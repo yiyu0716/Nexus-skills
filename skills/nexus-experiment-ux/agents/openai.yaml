@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nexus Experiment UX"
+  short_description: "Design clear ML experiment dashboards and reports"
+  default_prompt: "Improve the experiment dashboard and report UX."
