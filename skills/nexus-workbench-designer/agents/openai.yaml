@@ -1,4 +1,4 @@
 interface:
   display_name: "Nexus Workbench Designer"
-  short_description: "Design project-specific ML experiment workbenches"
-  default_prompt: "Design a local ML experiment workbench for this repository."
+  short_description: "Design human-facing ML experiment dashboards"
+  default_prompt: "Design a human-facing local ML experiment dashboard for this repository."

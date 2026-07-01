@@ -9,22 +9,24 @@ Use before writing code.
 - Storage choice justified.
 - Generated artifact paths chosen.
 - Raw files protected.
-- Agent protocol decided if agents will call commands.
+- Human-facing views chosen before automation surfaces.
+- Agent protocol explicitly marked optional unless agents, CI, or remote tools will call commands.
 
-## Commands
+## Visual Workflow
 
-- `record --file` or equivalent.
-- `eda --file` or equivalent.
-- `compare`.
-- `render` or `dashboard`.
-- `list` or `inspect`.
+- Identify metric/log/dataset inputs.
+- Normalize enough data for charts and tables.
+- Generate dashboard, report, or app route.
+- Include comparison and EDA views when matching data exists.
+- Add a refresh script or command only if the repo needs repeatable regeneration.
 
 ## Tests
 
 - Ingest one metric fixture.
 - Analyze latest/best metric values.
 - Generate at least one report/dashboard.
-- Verify machine-readable output if included.
+- Verify hover values and multi-run line clarity.
+- Verify machine-readable output only if optional automation is included.
 - Verify ambiguous filenames fail or ask instead of guessing.
 
 ## Completion

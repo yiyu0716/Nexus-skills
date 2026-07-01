@@ -1,8 +1,19 @@
 # CLI Contract
 
-Design commands so both humans and coding agents can call them.
+Design commands only when the workbench needs automation beyond the human-facing dashboard/report.
 
-## Common Commands
+## When To Add Commands
+
+Add a command layer when at least one is true:
+
+- CI or scheduled jobs need to regenerate reports.
+- Coding agents need to record, compare, or inspect runs without opening the UI.
+- Remote machines need to push metrics or trigger rendering.
+- The repository already has command-based experiment workflows.
+
+For local human inspection of existing files, prefer a simple refresh script, app route, or static renderer.
+
+## Common Optional Commands
 
 - `init`: create required generated directories and config
 - `record --file <path>`: ingest a metric or run artifact

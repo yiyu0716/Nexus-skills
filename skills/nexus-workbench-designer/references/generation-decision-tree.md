@@ -6,15 +6,15 @@ Use this when choosing what to build.
 
 If Python ML repo:
 
-- create Python scripts or package modules
-- prefer static HTML reports
+- prefer static HTML reports or a lightweight dashboard over a CLI-first design
+- create Python scripts or package modules only as needed to read files and render views
 - use JSON/YAML first, SQLite when runs will grow
 
 If Node/TypeScript repo:
 
-- create TypeScript command scripts
 - integrate with existing frontend if present
 - otherwise static HTML export is acceptable
+- add TypeScript command scripts only for repeatable refresh or automation
 
 If notebook-heavy repo:
 

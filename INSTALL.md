@@ -10,6 +10,11 @@ cd Nexus-skills
 mkdir -p ~/.codex/skills
 cp -r skills/nexus-workbench-designer ~/.codex/skills/
 cp -r skills/nexus-experiment-ux ~/.codex/skills/
+```
+
+Install the optional automation protocol skill only when you want CLI, JSON, CI, remote ingestion, or cross-agent command workflows:
+
+```bash
 cp -r skills/nexus-agent-protocol ~/.codex/skills/
 ```
 
@@ -28,8 +33,8 @@ Recommended minimal `CLAUDE.md` pointer:
 When asked to design a local ML experiment workbench, read the Nexus Skills:
 - skills/nexus-workbench-designer/SKILL.md
 - skills/nexus-experiment-ux/SKILL.md
-- skills/nexus-agent-protocol/SKILL.md
 Do not copy a fixed Nexus app. Design a project-specific file-first workbench.
+Only read skills/nexus-agent-protocol/SKILL.md when CLI, JSON, CI, remote ingestion, or cross-agent automation is explicitly requested.
 ```
 
 ## Cursor, Trae, Qoder, Zed, Cline, Continue
@@ -43,10 +48,12 @@ Use the same Markdown content through the agent's rule system. Common targets:
 
 The important point is to preserve the three roles:
 
-- `nexus-workbench-designer`: architecture and generation strategy
+- `nexus-workbench-designer`: visual-first architecture and generation strategy
 - `nexus-experiment-ux`: dashboards, charts, reports, visual QA
-- `nexus-agent-protocol`: CLI, JSON sentinel, agent-readable errors
+- `nexus-agent-protocol`: optional CLI, JSON sentinel, agent-readable errors for automation
 
 ## Forward Test
 
 Use `fixtures/python-classification` to test whether an agent can generate a project-specific workbench without copying the original Nexus implementation.
+
+The default forward test is visual-first. It should not require a CLI or JSON sentinel unless the test prompt explicitly asks for automation.

@@ -1,17 +1,19 @@
 ---
 name: nexus-agent-protocol
-description: Use when designing command-line interfaces, JSON output contracts, agent-readable errors, project rules, or cross-agent workflows for ML experiment recording, EDA, comparison, and dashboard generation.
+description: Use when a user explicitly needs optional command-line automation, JSON output contracts, agent-readable errors, CI hooks, project rules, remote ingestion, or cross-agent workflows for an ML experiment visualization workbench.
 ---
 
 # Nexus Agent Protocol
 
 ## Principle
 
-Give coding agents a boring, stable command contract. Any agent that can run shell commands and parse stdout should be able to use the generated workbench.
+Give coding agents and automation tools a boring, stable command contract when a human-facing visual workbench also needs automation.
+
+This skill is optional. Do not add a CLI or JSON sentinel merely because a dashboard reads local logs, metrics, or datasets. Use it only when commands will be called by agents, CI, remote tools, scheduled jobs, or other integrations.
 
 ## Contract Pattern
 
-Commands may print human-readable output, but they must also print one final machine-readable sentinel line:
+When a command contract is needed, commands may print human-readable output, but they should also print one final machine-readable sentinel line:
 
 ```text
 NEXUS_JSON {"ok": true, "action": "record", "artifacts": {}, "message": "..."}
@@ -30,7 +32,7 @@ Projects may rename the sentinel, but the pattern should remain: one stable line
 
 Failure payloads must be structured and parseable. Do not rely on traceback text.
 
-## Agent Behavior
+## Optional Agent Behavior
 
 1. Run the command with `--json` or equivalent.
 2. Find the last line starting with the sentinel prefix.

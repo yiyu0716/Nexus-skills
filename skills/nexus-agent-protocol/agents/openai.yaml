@@ -1,4 +1,4 @@
 interface:
   display_name: "Nexus Agent Protocol"
-  short_description: "Design agent-friendly CLI and JSON contracts"
-  default_prompt: "Design an agent-friendly command protocol for this experiment workbench."
+  short_description: "Add optional CLI and JSON automation contracts"
+  default_prompt: "Add an optional agent-friendly command protocol for this experiment workbench."

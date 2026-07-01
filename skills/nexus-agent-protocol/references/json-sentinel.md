@@ -1,5 +1,7 @@
 # JSON Sentinel Pattern
 
+Use this pattern only when a command will be consumed by an agent, CI job, remote tool, or other automation. It is not required for a purely human-facing dashboard that reads local files.
+
 Use one parseable line in stdout:
 
 ```text
